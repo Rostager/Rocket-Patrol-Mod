@@ -3,6 +3,8 @@ class Play extends Phaser.Scene {
         super('playScene')
     }
 
+
+
     create(){
         //place tile sprite
         this.starfield = this.add.tileSprite(0,0,640, 480, 'starfield').setOrigin(0,0)
@@ -46,8 +48,21 @@ class Play extends Phaser.Scene {
             },
             fixedWidth: 100
         }
-        this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig)
 
+        let timerConfig = {
+            fontFamily: 'Courier',
+            fontSize: '28px',
+            backgroundColor: '#F3B141',
+            color: '#00424f',
+            align: 'right',
+            padding: {
+                top: 35,
+                bottom: 5,
+            },
+            fixedWidth: 100
+        }
+        this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig)
+        this.timerRight = this.add.text(game.config.width - borderUISize - borderPadding - 100, borderUISize + borderPadding*2, '60', timerConfig)
         // GAME OVER flag
         this.gameOver = false
 
@@ -61,8 +76,11 @@ class Play extends Phaser.Scene {
     }
 
 
-    update(){
 
+    update(){
+        //Dispaly Timer
+        //Whats happening - We are taking the total time allocated for the game (this.clock.delay) and subtracting the time that has already elapsed (this.clock.elapsed) to get the remaining time. We then divide by 1000 to convert milliseconds to seconds and use Math.floor to round down to the nearest whole number for display.
+        this.timerRight.text = Math.floor((this.clock.delay - this.clock.elapsed) / 1000);
         // check key input for restart
         if(this.gameOver && Phaser.Input.Keyboard.JustDown(keyRESET)) {
             this.scene.restart()
@@ -97,6 +115,7 @@ class Play extends Phaser.Scene {
     }
 
 
+    
     checkCollision(rocket, ship) {
         // simple AABB checking
         if (rocket.x < ship.x + ship.width && 
@@ -108,6 +127,7 @@ class Play extends Phaser.Scene {
             return false
         }
     }
+
 
 
     shipExplode(ship) {
@@ -123,7 +143,8 @@ class Play extends Phaser.Scene {
         })
         // score add and text update
         this.p1Score += ship.points
-        this.scoreLeft.text = this.p1Score    
+        this.scoreLeft.text = this.p1Score 
+        this.clock.delay += 1000; // add 1 second to clock on hit   
         this.sound.play('sfx-explosion')   
     }
 }

@@ -2,17 +2,17 @@
 *  Rocket Patrol: Earths Final Defence
 *  Time for completion: ~
 *  Mods choses from the list below 
-    * 1. New spaceship type (w/ new artwork) (5)
-    * 2. Implement a new timing/scoring mechanism that adds 
+    * 1. New spaceship type (w/ new artwork) (5) (Haven't started)
+    * 2. Implement a new timing/scoring mechanism that adds (In Progress)
          time to the clock for successful hits and subtracts time for misses (5)
-    * 3 Implement mouse control for player movement and mouse click to fire (5)
-    * 4. Use Phaser's particle emitter to create a particle explosion when the rocket hits the spaceship (5)
+    * 3 Implement mouse control for player movement and mouse click to fire (5) (DONE)
+    * 4. Use Phaser's particle emitter to create a particle explosion when the rocket hits the spaceship (5) (Haven't started)
 */
-     let config = {
-    type: Phaser.AUTO,
-    width: 640,
-    height: 480,
-    scene: [Menu, Play]
+    let config = {
+        type: Phaser.AUTO,
+        width: 640,
+        height: 480,
+        scene: [Menu, Play]
 }
 
 let game = new Phaser.Game(config)
