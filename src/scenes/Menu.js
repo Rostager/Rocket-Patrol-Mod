@@ -9,6 +9,7 @@ class Menu extends Phaser.Scene {
         this.load.image('rocket','./assets/rocket.png')
         this.load.image('spaceship', './assets/spaceship.png')
         this.load.image('starfield','./assets/starfield.png')
+        this.load.image('testParticle', './assets/testParticle.png')
 
         // load audio
         this.load.audio('sfx-select', './assets/sfx-select.wav')
@@ -21,6 +22,8 @@ class Menu extends Phaser.Scene {
             startFrame: 0,
             endFrame: 9
         })
+
+    
     }
 
 

@@ -23,9 +23,17 @@ class Play extends Phaser.Scene {
         // add spaceships (x3)
         this.ship01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*4, 'spaceship', 0, 30).setOrigin(0, 0)
         this.ship02 = new Spaceship(this, game.config.width + borderUISize*3, borderUISize*5 + borderPadding*2, 'spaceship', 0, 20).setOrigin(0,0)
-        this.ship03 = new YoshiPixie(this, game.config.width, borderUISize*5 + borderPadding*9, 'spaceship', 0, 10).setOrigin(0,0)
+        this.ship03 = new YoshiPixie(this, game.config.width, borderUISize*5 + borderPadding*9, 'spaceship', 0, 10).setOrigin(0,0).setScale(0.5)
         
-
+        //Particle emitter stuff
+           this.emitter = this.add.particles(0, 0, 'testParticle', {
+            lifespan: 4000,
+            speed: { min: 100, max: 150 },
+            scale: { start: 0.1, end: 0 },
+            rotate: { start: 0, end: 360 },
+            gravityY: 0,
+            emitting: false
+        });
        
         //this.ship04.body.setSize(this.ship04.width * 0.8, this.ship04.height * 0.8);
 
@@ -105,14 +113,17 @@ class Play extends Phaser.Scene {
         if(this.checkCollision(this.p1Rocket, this.ship03)) {
             this.p1Rocket.reset()
             this.shipExplode(this.ship03)   
+            this.emitter.emitParticleAt(this.ship03.x + this.ship03.width/2, this.ship03.y, 15); // Emit 15 particles at the ship's position
         }
         if (this.checkCollision(this.p1Rocket, this.ship02)) {
             this.p1Rocket.reset()
             this.shipExplode(this.ship02)
+             this.emitter.emitParticleAt(this.ship02.x + this.ship02.width/2, this.ship02.y, 15); // Emit 15 particles at the ship's position
         }
         if (this.checkCollision(this.p1Rocket, this.ship01)) {
             this.p1Rocket.reset()
             this.shipExplode(this.ship01)
+             this.emitter.emitParticleAt(this.ship01.x + this.ship01.width/2, this.ship01.y, 15); // Emit 15 particles at the ship's position
         }
 
         
