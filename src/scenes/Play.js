@@ -23,7 +23,11 @@ class Play extends Phaser.Scene {
         // add spaceships (x3)
         this.ship01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*4, 'spaceship', 0, 30).setOrigin(0, 0)
         this.ship02 = new Spaceship(this, game.config.width + borderUISize*3, borderUISize*5 + borderPadding*2, 'spaceship', 0, 20).setOrigin(0,0)
-        this.ship03 = new Spaceship(this, game.config.width, borderUISize*6 + borderPadding*4, 'spaceship', 0, 10).setOrigin(0,0)
+        this.ship03 = new YoshiPixie(this, game.config.width, borderUISize*5 + borderPadding*9, 'spaceship', 0, 10).setOrigin(0,0)
+        
+
+       
+        //this.ship04.body.setSize(this.ship04.width * 0.8, this.ship04.height * 0.8);
 
         // Define keys
         // Shoot via left click on mouse
@@ -92,7 +96,7 @@ class Play extends Phaser.Scene {
         this.starfield.tilePositionX -= 4
 
         if(!this.gameOver) {               
-            this.p1Rocket.update()         // update rocket sprite
+            this.p1Rocket.update(this.clock)         // update rocket sprite
             this.ship01.update()           // update spaceships (x3)
             this.ship02.update()
             this.ship03.update()
