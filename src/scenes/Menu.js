@@ -10,7 +10,7 @@ class Menu extends Phaser.Scene {
         this.load.image('spaceship', './assets/spaceship.png')
         this.load.image('starfield','./assets/starfield.png')
         this.load.image('testParticle', './assets/testParticle.png')
-
+        this.load.image('newShip', './assets/NewShip.png')
         // load audio
         this.load.audio('sfx-select', './assets/sfx-select.wav')
         this.load.audio('sfx-explosion', './assets/sfx-explosion.wav')

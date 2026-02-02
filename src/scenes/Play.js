@@ -23,7 +23,8 @@ class Play extends Phaser.Scene {
         // add spaceships (x3)
         this.ship01 = new Spaceship(this, game.config.width + borderUISize*6, borderUISize*4, 'spaceship', 0, 30).setOrigin(0, 0)
         this.ship02 = new Spaceship(this, game.config.width + borderUISize*3, borderUISize*5 + borderPadding*2, 'spaceship', 0, 20).setOrigin(0,0)
-        this.ship03 = new YoshiPixie(this, game.config.width, borderUISize*5 + borderPadding*9, 'spaceship', 0, 10).setOrigin(0,0).setScale(0.5)
+        //New spaceship type (oscillating Yoshi Pixie)
+        this.ship03 = new YoshiPixie(this, game.config.width, borderUISize*5 + borderPadding*9, 'newShip', 0, 50).setOrigin(0,0)
         
         //Particle emitter stuff
            this.emitter = this.add.particles(0, 0, 'testParticle', {
@@ -68,12 +69,13 @@ class Play extends Phaser.Scene {
             color: '#00424f',
             align: 'right',
             padding: {
-                top: 35,
+                top: 5,
                 bottom: 5,
             },
             fixedWidth: 100
         }
         this.scoreLeft = this.add.text(borderUISize + borderPadding, borderUISize + borderPadding*2, this.p1Score, scoreConfig)
+        this.timerText = this.add.text(game.config.width/2 + 50, borderUISize + borderPadding*2, 'TIME', timerConfig)
         this.timerRight = this.add.text(game.config.width - borderUISize - borderPadding - 100, borderUISize + borderPadding*2, '60', timerConfig)
         // GAME OVER flag
         this.gameOver = false
