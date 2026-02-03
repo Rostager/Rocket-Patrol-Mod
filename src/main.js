@@ -1,6 +1,6 @@
 /* Robert Stager
 *  Rocket Patrol: Earths Final Defence
-*  Time for completion: ~
+*  Time for completion: ~5hr
 *  Mods choses from the list below 
     * 1. New spaceship type (w/ new artwork) (5) (Done)
     * 2. Implement a new timing/scoring mechanism that adds (Done)
